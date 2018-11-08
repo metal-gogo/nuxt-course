@@ -5,7 +5,10 @@
     </section>
     <section class="existing-posts">
       <h2>Existing posts</h2>
-      <PostList is-admin />
+      <PostList
+        :posts="posts"
+        is-admin
+      />
     </section>
   </div>
 </template>
@@ -19,6 +22,26 @@ export default {
   components: {
     AppButton,
     PostList,
+  },
+  data() {
+    return {
+      posts: [
+        {
+          author: 'Metal Gogo',
+          id: '1',
+          title: 'My awesome post',
+          content: 'Super amazing content',
+          thumbnail: 'http://placekitten.com/600/800',
+        },
+        {
+          author: 'Metal Gogo',
+          id: '2',
+          title: 'My awesome post 2',
+          content: 'Super amazing content',
+          thumbnail: 'http://placekitten.com/800/600',
+        },
+      ],
+    };
   },
 };
 </script>

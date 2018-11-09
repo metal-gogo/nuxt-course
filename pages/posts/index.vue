@@ -11,25 +11,27 @@ export default {
   components: {
     PostList,
   },
-  data() {
-    return {
-      posts: [
-        {
-          author: 'Metal Gogo',
-          id: '1',
-          title: 'My awesome post',
-          content: 'Super amazing content',
-          thumbnail: 'http://placekitten.com/600/800',
-        },
-        {
-          author: 'Metal Gogo',
-          id: '2',
-          title: 'My awesome post 2',
-          content: 'Super amazing content',
-          thumbnail: 'http://placekitten.com/800/600',
-        },
-      ],
-    };
+  asyncData(context, callback) {
+    setTimeout(() => {
+      callback(null, {
+        posts: [
+          {
+            author: 'Metal Gogo',
+            id: '1',
+            title: 'My awesome post',
+            previewText: 'Super amazing content',
+            thumbnail: 'http://placekitten.com/600/800',
+          },
+          {
+            author: 'Metal Gogo',
+            id: '2',
+            title: 'My awesome post 2',
+            previewText: 'Super amazing content',
+            thumbnail: 'http://placekitten.com/800/600',
+          },
+        ],
+      });
+    }, 1000);
   },
 };
 </script>

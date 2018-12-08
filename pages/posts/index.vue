@@ -1,6 +1,6 @@
 <template>
   <div class="posts-page">
-    <PostList :posts="posts" />
+    <PostList :posts="posts"/>
   </div>
 </template>
 
@@ -11,27 +11,35 @@ export default {
   components: {
     PostList,
   },
-  asyncData(context, callback) {
-    setTimeout(() => {
-      callback(null, {
-        posts: [
-          {
-            author: 'Metal Gogo',
-            id: '1',
-            title: 'My awesome post',
-            previewText: 'Super amazing content',
-            thumbnail: 'http://placekitten.com/600/800',
-          },
-          {
-            author: 'Metal Gogo',
-            id: '2',
-            title: 'My awesome post 2',
-            previewText: 'Super amazing content',
-            thumbnail: 'http://placekitten.com/800/600',
-          },
-        ],
+  asyncData(context) {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve({
+          posts: [
+            {
+              author: 'Metal Gogo',
+              id: '1',
+              title: 'My awesome post',
+              previewText: 'Super amazing content',
+              thumbnail: 'http://placekitten.com/600/800',
+            },
+            {
+              author: 'Metal Gogo',
+              id: '2',
+              title: 'My awesome post 2',
+              previewText: 'Super amazing content',
+              thumbnail: 'http://placekitten.com/800/600',
+            },
+          ],
+        });
+      }, 1000);
+    })
+      .then(data => {
+        return data;
+      })
+      .catch(e => {
+        context.error(new Error());
       });
-    }, 1000);
   },
 };
 </script>

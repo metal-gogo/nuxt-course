@@ -41,6 +41,9 @@ export default {
         context.error(new Error());
       });
   },
+  created() {
+    this.$store.dispatch('setPosts', this.posts);
+  },
 };
 </script>
 
